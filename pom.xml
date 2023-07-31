@@ -1,64 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- POM 모델 버전 -->
     <modelVersion>4.0.0</modelVersion>
+
+    <!-- 상위(parent) 프로젝트 정보 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.5.6</version>
     </parent>
+
+    <!-- 프로젝트 정보 -->
     <groupId>com.example</groupId>
     <artifactId>quartz-jpa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>quartz-jpa</name>
     <description>Demo project for Spring Boot</description>
 
+    <!-- 프로젝트 속성 설정 -->
     <properties>
+        <!-- 소스와 리포팅 인코딩 설정 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- Springdoc OpenAPI 버전 설정 -->
         <springdoc-openapi.version>1.5.12</springdoc-openapi.version>
+        <!-- Java 버전 설정 -->
         <java.version>17</java.version>
     </properties>
 
+    <!-- 의존성 선언 -->
     <dependencies>
+        <!-- Spring Boot Data JPA: 스프링 부트용 JPA 지원 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+        <!-- Spring Boot Web: 스프링 부트용 웹 지원 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- MySQL JDBC 드라이버: 런타임 스코프 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+        <!-- Druid: 데이터베이스 커넥션 풀 라이브러리 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.1.10</version>
         </dependency>
 
-
-        <!--quartz 의존성 주입-->
+        <!-- Quartz: 스케줄링 라이브러리 -->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
             <version>2.2.3</version>
         </dependency>
+        <!-- Spring Context Support: 스프링 컨텍스트 지원 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
         </dependency>
+        <!-- Quartz Jobs: Quartz의 Job 클래스 라이브러리 -->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz-jobs</artifactId>
             <version>2.2.3</version>
         </dependency>
 
+        <!-- Lombok: 자동 코드 생성 라이브러리 (provided scope) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -66,39 +81,57 @@
             <scope>provided</scope>
         </dependency>
 
-        <!--log4j-->
+        <!-- Log4j 2: 로깅 라이브러리 -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.3</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.slf4j</groupId>-->
-<!--            <artifactId>slf4j-log4j12</artifactId>-->
-<!--            <version>1.7.25</version>-->
-<!--        </dependency>-->
-        <!--junit-->
+
+        <!-- JUnit: 단위 테스트 라이브러리 -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
 
+        <!-- Commons Lang: Apache Commons Lang 라이브러리 -->
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>2.6</version>
         </dependency>
 
+        <!-- Spring Boot Thymeleaf: 스프링 부트용 Thymeleaf 템플릿 엔진 지원 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
+        <!-- Spring Batch Core 라이브러리 의존성 -->
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-core</artifactId>
+            <version>5.0.2</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.batch</groupId>-->
+<!--            <artifactId>spring-batch-core</artifactId>-->
+<!--            <version>4.3.8</version>-->
+<!--        </dependency>-->
+
+        <!-- Spring Boot Batch Starter 라이브러리 의존성 -->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-batch</artifactId>-->
+<!--            <version>3.1.2</version>-->
+<!--        </dependency>-->
 
     </dependencies>
 
+    <!-- Maven 빌드 설정 -->
     <build>
+        <!-- Spring Boot Maven Plugin: 스프링 부트를 위한 Maven 플러그인 -->
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -107,7 +140,9 @@
         </plugins>
     </build>
 
+    <!-- Maven 저장소 설정 -->
     <repositories>
+        <!-- Spring Snapshots 레포지토리: Snapshot 릴리즈 사용 가능 -->
         <repository>
             <id>spring-snapshots</id>
             <name>Spring Snapshots</name>
@@ -116,13 +151,16 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        <!-- Spring Milestones 레포지토리: Milestone 릴리즈 사용 가능 -->
         <repository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
             <url>https://repo.spring.io/milestone</url>
         </repository>
     </repositories>
+    <!-- Maven 플러그인 저장소 설정 -->
     <pluginRepositories>
+        <!-- Spring Snapshots 플러그인 레포지토리: Snapshot 릴리즈 사용 가능 -->
         <pluginRepository>
             <id>spring-snapshots</id>
             <name>Spring Snapshots</name>
@@ -131,6 +169,7 @@
                 <enabled>true</enabled>
             </snapshots>
         </pluginRepository>
+        <!-- Spring Milestones 플러그인 레포지토리: Milestone 릴리즈 사용 가능 -->
         <pluginRepository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>

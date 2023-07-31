@@ -1893,7 +1893,7 @@ a cite {
 .layui-btn-xs {
     height: 22px;
     line-height: 22px;
-    padding: 0 5px;
+    /* padding: 0 5px; */
     font-size: 12px
 }
 
@@ -2802,6 +2802,13 @@ a cite {
 .layui-flow-more a i {
     font-size: 30px;
     color: #737383
+}
+
+/* 테이블 상단 우측 추가 버튼 */
+.insert-btn{
+    display: flex;
+    justify-content: right;
+    padding-right: 70px;
 }
 
 .layui-table {

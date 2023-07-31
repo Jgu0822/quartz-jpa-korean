@@ -25,7 +25,16 @@ spring:
     prefix: classpath:/templates/
     cache: false
 
-#引入日志配置文件
+  # Spring Batch 설정 시작
+  spring:
+    batch:
+      initialize-schema: always # 배치 스키마를 항상 초기화하도록 설정합니다. (개발 환경에서만 사용해야 합니다.)
+    datasource:
+      url: jdbc:mysql://localhost:3306/chinaQuartz # 배치 작업용 데이터베이스 URL
+      username: root # 배치 작업용 데이터베이스 접속 사용자명
+      password: 1234 # 배치 작업용 데이터베이스 접속 비밀번호
+
+# 로그 프로필 가져오기
 ##=====================================  log  =============================
 #logging:
 #  config: classpath:log4j2.xml
