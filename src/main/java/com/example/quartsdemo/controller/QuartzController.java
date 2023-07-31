@@ -7,13 +7,15 @@ import org.quartz.impl.matchers.GroupMatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.PostConstruct;
+//import javax.annotation.PostConstruct;
 import java.util.Set;
 
 /**
@@ -30,9 +32,9 @@ public class QuartzController {
     @Autowired
     private QuartzService jobService;
 
-    // 모든 Job을 초기화하여 시작합니다.
-    @PostConstruct
-    public void initialize() {
+    // 초기화 작업을 처리할 새로운 메서드
+    @EventListener(ContextRefreshedEvent.class)
+    public void onApplicationEvent() {
         try {
             reStartAllJobs();
             logger.info("초기화 성공");
