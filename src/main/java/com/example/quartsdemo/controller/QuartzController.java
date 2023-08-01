@@ -74,7 +74,7 @@ public class QuartzController {
     /**
      * 모든 job을 다시 시작합니다.
      */
-    private void reStartAllJobs() throws SchedulerException {
+    public void reStartAllJobs() throws SchedulerException {
 
         synchronized (logger) {
             Scheduler scheduler = schedulerFactoryBean.getScheduler();

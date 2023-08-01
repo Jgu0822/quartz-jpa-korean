@@ -4,6 +4,7 @@ import com.example.quartsdemo.entity.JobEntity;
 import com.example.quartsdemo.entity.ResultBody;
 import com.example.quartsdemo.service.DataService;
 import lombok.extern.slf4j.Slf4j;
+import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,9 @@ public class DataController {
 
     @Autowired
     private DataService dataService;
+
+    @Autowired
+    private QuartzController quartzController;
 
     /**
      * 규정된 반환 형식
@@ -42,9 +46,10 @@ public class DataController {
      * 추가
      */
     @RequestMapping("/addJob")
-    public ResultBody addJob(JobEntity job) {
+    public ResultBody addJob(JobEntity job) throws SchedulerException {
         log.info("job==>"+job);
         dataService.save(job);
+        quartzController.reStartAllJobs();
         ResultBody all = dataService.getAll();
         return all;
     }
@@ -72,8 +77,9 @@ public class DataController {
      * 새로운 내용으로 수정
      */
     @RequestMapping("/updData")
-    public ResultBody updData(JobEntity job) {
+    public ResultBody updData(JobEntity job) throws SchedulerException {
         dataService.updData(job);
+        quartzController.reStartAllJobs();
         ResultBody all = dataService.getAll();
         return all;
     }

@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
@@ -19,10 +20,12 @@ import java.util.List;
  * @DisallowConcurrentExecution 설정을 하면 프로그램이 작업이 완료된 후에 다음 작업을 실행하며,
  * 그렇지 않으면 3초 후에 새로운 스레드를 시작하여 실행합니다.
  */
+@Slf4j
 @DisallowConcurrentExecution
 @PersistJobDataAfterExecution // 예외가 없을 때 데이터를 업데이트합니다. 사용 가능한가요?
 @Component
-@Slf4j
+
+//@Configuration // Spring Batch Test
 public class DynamicJob implements Job {
     private Logger logger = LoggerFactory.getLogger(DynamicJob.class);
 
