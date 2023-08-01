@@ -1,22 +1,22 @@
 # Quartz에서 jar 패키지의 실행을 예약합니다.
 
 #### 0. 사용된 dependency의 버전과 역할
-| 디펜던시 이름 | 버전 | 역할 |
+| 디펜던시 이름 | 버전 | 기능 |
 | --- | --- | --- |
-| spring-boot-starter-parent | 2.5.6 | Spring Boot 프로젝트의 부모 POM으로 설정된 스프링 부트 버전 및 기본 설정을 제공합니다. |
-| spring-boot-starter-data-jpa | - | Spring Boot용 JPA 지원을 제공합니다. |
-| spring-boot-starter-web | - | Spring Boot용 웹 지원을 제공합니다. |
-| mysql-connector-java | - | MySQL 데이터베이스를 사용하기 위한 JDBC 드라이버입니다. |
-| druid | 1.1.10 | 데이터베이스 커넥션 풀 라이브러리로서, 데이터베이스 연결 관리에 도움을 줍니다. |
-| quartz | 2.2.3 | 스케줄링 라이브러리인 Quartz를 사용할 수 있도록 합니다. |
-| spring-context-support | - | 스프링 컨텍스트를 지원하기 위한 라이브러리입니다. |
-| quartz-jobs | 2.2.3 | Quartz의 Job 클래스를 사용할 수 있도록 합니다. |
-| lombok | 1.18.12 | 자동 코드 생성 라이브러리로서, 간편한 코드 작성을 지원합니다. |
-| log4j-core | 2.3 | 로깅 라이브러리인 Log4j 2를 사용합니다. |
-| junit | 4.12 | 단위 테스트를 위한 라이브러리로 JUnit을 사용합니다. |
-| commons-lang | 2.6 | Apache Commons Lang 라이브러리를 사용합니다. |
-| spring-boot-starter-thymeleaf | - | Spring Boot용 Thymeleaf 템플릿 엔진 지원을 제공합니다. |
-| spring-batch-core | 5.0.2 | Spring Batch Core 라이브러리를 사용합니다. |
+| spring-core | 6.0.11 | 스프링 프레임워크 |
+| spring-boot-starter-data-jpa | 3.1.2 | 스프링 부트용 JPA 지원 |
+| spring-boot-starter-web | - | 스프링 부트용 웹 지원 |
+| mysql-connector-java | 8.0.33 | MySQL JDBC 드라이버 |
+| druid | 1.2.18 | 데이터베이스 커넥션 풀 라이브러리 |
+| quartz | 2.3.2 | 스케줄링 라이브러리 |
+| spring-context-support | - | 스프링 컨텍스트 지원 |
+| quartz-jobs | 2.3.2 | Quartz의 Job 클래스 라이브러리 |
+| lombok | 1.18.28 | 자동 코드 생성 라이브러리 (provided scope) |
+| log4j-core | 2.20.0 | 로깅 라이브러리 |
+| junit | 4.13.2 | 단위 테스트 라이브러리 |
+| commons-lang | 2.6 | Apache Commons Lang 라이브러리 |
+| spring-boot-starter-thymeleaf | - | 스프링 부트용 Thymeleaf 템플릿 엔진 지원 |
+| spring-batch-core | 5.0.2 | Spring Batch Core 라이브러리 의존성 |
 
 
 #### 1.Quartz 소개
